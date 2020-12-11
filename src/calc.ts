@@ -5,7 +5,7 @@ const p = document.querySelector<HTMLParagraphElement>("#retorno")!
 const notas = document.querySelector<HTMLParagraphElement>("#notas")!
 
 //calculo do imc
-function calcIMC(peso: number, altura:number) {
+function calcIMC(peso: number, altura: number) {
     return (peso / (altura * altura)).toFixed(2)
 }
 
@@ -18,23 +18,25 @@ function commaToDot(e: string) {
 }
 
 //leitura após clicar botão Calcular IMC
-form.addEventListener('submit', (e: Event) => {
+form.addEventListener('submit', (e: Event): void => {
     e.preventDefault();
     let regexNumeros = /[+-]?([0-9]*[.,])?[0-9]+/
-    
+
     //validações
-    if(!peso.value || !regexNumeros.test(peso.value)) {
+    if (!peso.value || !regexNumeros.test(peso.value)) {
         p.innerText = "Por favor, preencha o campo peso corretamente"
         return
     }
-    if(!altura.value || !regexNumeros.test(altura.value)) {
+    if (!altura.value || !regexNumeros.test(altura.value)) {
         p.innerText = "Por favor, preencha o campo altura corretamente"
         return
     }
-    
+    if (altura.value > 100) {
+        altura.value /= 100
+    }
     //IMC através de programação funcional
     let imc = calcIMC(parseFloat(commaToDot(peso.value)), parseFloat(commaToDot(altura.value)))
-    
+
     //retorno do IMC
     p.innerText = "seu IMC é de " + imc
 

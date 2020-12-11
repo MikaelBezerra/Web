@@ -29,16 +29,16 @@ cidade.addEventListener('change', (e: Event) => {
 
 //aparecer caixa de texto em outro problema de saúde
 saudeOutra.addEventListener('change', (e: Event) => {
-   if (saudeOutra.checked == true) {
-       txtSaude.hidden = false;
-   } else {
-       txtSaude.hidden = true;
-   }
+    if (saudeOutra.checked == true) {
+        txtSaude.hidden = false;
+    } else {
+        txtSaude.hidden = true;
+    }
 })
 
 //retirar marcação dos checkbox em saúde caso selecionado Nenhuma
 saudeNenhuma.addEventListener('change', (e: Event) => {
-    if(saudeNenhuma.checked) {
+    if (saudeNenhuma.checked) {
         for (let checkbox of checkboxesSaude) {
             checkbox.checked = false;
         }
@@ -56,17 +56,17 @@ cadastroCliente.addEventListener('submit', (e: Event) => {
         retorno.innerText = `Campo nome preenchido incorretamente. Por favor digite seu nome completo.`
         return
     }
-    let nomeValor = nome.value;    
-    
+    let nomeValor = nome.value;
+
     //validação e preenchimento campo Cidade
     let cidadeValor
-    if(cidade.value == "o") {
+    if (cidade.value == "o") {
         cidadeValor = txtcidade.value
     } else {
         cidadeValor = cidade.value
     }
     const regOnlyLetter = /[^0-9]/g
-    if(!regOnlyLetter.test(cidadeValor)){
+    if (!regOnlyLetter.test(cidadeValor)) {
         retorno.innerText = 'Campo Cidade preenchido incorretamente. Por favor utilize apenas letras.'
         return
     }
@@ -79,7 +79,7 @@ cadastroCliente.addEventListener('submit', (e: Event) => {
     let procuraValor = procura.value
 
     //formata contato para ignorar hifens, pontos e parenteses, valida numero com 11 dígitos (DDD)
-    let contatoValor= contato.value.replace(regOnlyLetter, "");
+    let contatoValor = contato.value.replace(regOnlyLetter, "");
     if (!(contatoValor.length == 11)) {
         retorno.innerText = 'Campo contato preenchido incorretamente. Digite o número de celular com DDD (11 dígitos)'
         return
@@ -94,8 +94,8 @@ cadastroCliente.addEventListener('submit', (e: Event) => {
     }
     if (saudeOutra.checked) {
         let regexcomma = /,/gi
-        let novoSaude = txtSaude.value.trim().replace(regexcomma,'').split(' ')
-        for (let i=0; i<novoSaude.length; i++) {
+        let novoSaude = txtSaude.value.trim().replace(regexcomma, '').split(' ')
+        for (let i = 0; i < novoSaude.length; i++) {
             saudeValor.push(novoSaude[i])
         }
     }
@@ -105,10 +105,10 @@ cadastroCliente.addEventListener('submit', (e: Event) => {
         let pessoa = new Pessoa(nomeValor, cidadeValor, generoValor, data, contatoValor, procuraValor, saudeValor)
         Pessoas.push(pessoa)
         console.log(Pessoas)
-        retorno.innerText=`Cadastro Efetuado com Sucesso! Bem vindo ${pessoa.name}!`
+        retorno.innerText = `Cadastro Efetuado com Sucesso! Bem vindo ${pessoa.name}!`
         localStorage.setItem("Pessoas Cadastradas", JSON.stringify(Pessoas))
-        } catch (error: any) {
+    } catch (error: any) {
         console.error(error)
         retorno.innerText = "\n Aconteceu algum erro ao registrar usuário"
-}
+    }
 })

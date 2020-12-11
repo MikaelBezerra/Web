@@ -116,18 +116,7 @@ form button {
 	font-size: 1rem;
 	font-family: var(--primary);
 }
-a {
-	width: 20%;
-	font-family: var(--action);
-	display: inline-block;
-	background-color: transparent;
-	border: solid;
-	color: #000000;
-	padding: 0.5rem 0.2rem;
-	border-radius: 2rem;
-	text-decoration: none;
-	font-size: 1rem;
-}
+
 @media screen and (max-width: 600px) {
 	.ordem,
 	input[type="text"] {

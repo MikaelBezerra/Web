@@ -94,7 +94,7 @@ header {
 }
 
 .scrolling-active #nav-btn:hover {
-	background-color: #000000;
+	background-color: #166df8;
 }
 
 .scrolling-active .nav-link::after {
