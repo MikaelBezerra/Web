@@ -16,6 +16,7 @@ header {
 	justify-content: space-between;
 	border-bottom: 2px solid rgba(255, 255, 255, 0.05);
 	transition: height 0.5s ease;
+	overflow: hidden;
 }
 
 .nav a {
@@ -25,9 +26,14 @@ header {
 }
 
 .nav .logo {
-	box-shadow: 4px 1px 0px 1px rgba(255, 255, 255, 0.14);
-	border-radius: 72px;
-	background-color: #ffffff56;
+	background: url(../image/logo.jpg) center no-repeat;
+	background-size: cover;
+	display: inline-block;
+	border-radius: 6px;
+	width: 80px;
+	height: 70px;
+	margin: 1rem;
+	position: relative;
 }
 
 .nav-list {
